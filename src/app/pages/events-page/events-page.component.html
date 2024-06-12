@@ -1,0 +1,15 @@
+<h1>Upcoming events:</h1>
+@for(event of events; track event.id ) {
+<div>
+  <!-- edit/event.id -->
+  <a [routerLink]="['edit', event.id]">
+    <h2>{{ event.name }}</h2>
+  </a>
+  <h5>Who's coming?</h5>
+  <ul>
+    @for(invitee of event.invitees; track invitee.id) {
+    <li>{{ invitee | contactName }}</li>
+    }
+  </ul>
+</div>
+}

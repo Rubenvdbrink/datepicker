@@ -1,0 +1,38 @@
+<h3>Contacts</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="2">E-mail address</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (contact of contacts(); track contact.id) {
+      <tr>
+        <td class="row align-items-center">
+          <div class="col-auto">
+            <input
+              class="form-control form-control-color"
+              (input)="updateColor(contact, $event)"
+              type="color"
+              value="{{ contact.color }}"
+            />
+          </div>
+          <div class="col-auto">
+            <!-- make use of contact name pipe -->
+            {{ contact | contactName }}
+          </div>
+        </td>
+        <td>{{ contact.email }}</td>
+        <td>
+          <button (click)="editContact(contact)" class="btn btn-secondary me-2">
+            Edit
+          </button>
+          <button (click)="deleteContact(contact)" class="btn btn-danger">
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>

@@ -1,0 +1,45 @@
+<h3 class="mb-3">Add contact</h3>
+  <form #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
+    <div class="row mb-3">
+      <label for="nameInput" class="form-label col-md-3">First name</label>
+      <div class="col">
+        <input
+          [(ngModel)]="newContact.firstName"
+          #firstNameControl="ngModel"
+          id="nameInput"
+          name="firstName"
+          type="text"
+          class="form- control"
+        />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="surnameInput" class="form-label col-md-3">Surname</label>
+      <div class="col">
+        <input
+          [(ngModel)]="newContact.surname"
+          #surnameControl="ngModel"
+          id="surnameInput"
+          name="surname"
+          type="text"
+          class="form- control"
+        />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="emailInput" class="form-label col-md-3">E-mail address</label>
+      <div class="col">
+        <input
+          [(ngModel)]="newContact.email"
+          #emailControl="ngModel"
+          id="emailInput"
+          name="email"
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="mb-3">
+      <button [disabled]="contactForm.invalid" type="submit" class="btn btn-primary offset-md-3">Add</button>
+    </div>
+  </form>
