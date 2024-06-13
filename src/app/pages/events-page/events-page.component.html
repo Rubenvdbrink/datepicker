@@ -1,5 +1,5 @@
 <h1>Upcoming events:</h1>
-@for(event of events; track event.id ) {
+@for(event of events(); track event.id ) {
 <div>
   <!-- edit/event.id -->
   <a [routerLink]="['edit', event.id]">

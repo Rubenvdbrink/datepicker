@@ -1,6 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Contact } from '../../models/contact';
-import { ContactService } from '../../services/contact-service';
 import { ContactListComponent } from '../../components/contact-list/contact-list.component';
 import { DpContactFormComponent } from '../../components/dp-contact-form/dp-contact-form.component';
 
@@ -11,24 +10,12 @@ import { DpContactFormComponent } from '../../components/dp-contact-form/dp-cont
     styleUrl: './contacts-page.component.scss',
     imports: [ContactListComponent, DpContactFormComponent]
 })
-export class ContactsPageComponent implements OnInit {
-  contactsService = inject(ContactService);
-
-  contacts: Contact[] = [];
-
-  ngOnInit(): void {
-    this.setContacts();
-  }
+export class ContactsPageComponent {
+  // contactStore = inject(ContactStore); 
+  // contacts = this.contactStore.contacts;
 
   contactAdded(contact: Contact) {
-    this.setContacts();
+    // this.contactStore.addContact(contact);
     console.log(`Contact added: ${contact.firstName} ${contact.surname}`);
   }
-
-  setContacts() {
-    this.contactsService.getAll().subscribe((contacts) => {
-      this.contacts = contacts;
-    });
-  }
-
 }

@@ -1,7 +1,7 @@
 {
   "events": [
     {
-      "name": "Discuss Dune movie vs book TEST2",
+      "name": "Discuss Dune movie vs book TEST222",
       "invitees": [
         {
           "id": 1,
@@ -49,6 +49,12 @@
       "firstName": "Eddy",
       "surname": "Valentino",
       "email": "eddy@valfam.co.uk"
+    },
+    {
+      "firstName": "Placeholder name",
+      "surname": "brink",
+      "email": "ruben@ruben.nl",
+      "id": 4
     }
   ]
 }

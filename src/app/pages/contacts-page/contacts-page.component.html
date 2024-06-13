@@ -1,10 +1,4 @@
-@if(contacts.length > 0) {
-<dp-contact-list [contacts]="contacts"></dp-contact-list>
-} @else {
-<h1>Loading...</h1>
-}
-<!-- Make use of the contact form component to add a new contact, make use of output signals -->
+<dp-contact-list></dp-contact-list>
 <dp-contact-form
-  [contacts]="contacts"
   (contactAdded)="contactAdded($event)"
 ></dp-contact-form>

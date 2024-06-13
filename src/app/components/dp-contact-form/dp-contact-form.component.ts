@@ -6,6 +6,7 @@ import {
   createNewContact,
   createPartialContact,
 } from '../../models/contact';
+import { ContactStore } from '../../events/stores/contact-store.service';
 
 @Component({
   selector: 'dp-contact-form',
@@ -15,9 +16,8 @@ import {
   styleUrl: './dp-contact-form.component.scss',
 })
 export class DpContactFormComponent {
-  contacts = input.required<Contact[]>();
   contactAdded = output<Contact>();
-  contactService = inject(ContactService);
+  contactStore = inject(ContactStore);
 
   newContact: Contact;
 
@@ -26,9 +26,7 @@ export class DpContactFormComponent {
   }
 
   addContact(form: NgForm) {
-    this.contactService.addContact(this.newContact).subscribe((contact) => {
-      this.contactAdded.emit(contact);
-    });
+    this.contactStore.addContact(this.newContact);
     this.newContact = createNewContact();
     form.reset();
   }
