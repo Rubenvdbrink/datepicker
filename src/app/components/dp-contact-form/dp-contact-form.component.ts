@@ -1,7 +1,11 @@
 import { Component, inject, input, output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ContactService } from '../../services/contact-service';
-import { Contact } from '../../models/contact';
+import {
+  Contact,
+  createNewContact,
+  createPartialContact,
+} from '../../models/contact';
 
 @Component({
   selector: 'dp-contact-form',
@@ -15,35 +19,17 @@ export class DpContactFormComponent {
   contactAdded = output<Contact>();
   contactService = inject(ContactService);
 
-  newContact: Contact = {
-    id: 0,
-    email: '',
-    firstName: '',
-    surname: '',
-  };
+  newContact: Contact;
+
+  constructor() {
+    this.newContact = createPartialContact({ firstName: 'Placeholder name' });
+  }
 
   addContact(form: NgForm) {
     this.contactService.addContact(this.newContact).subscribe((contact) => {
       this.contactAdded.emit(contact);
     });
-    this.newContact = {
-      id: 0,
-      email: '',
-      firstName: '',
-      surname: '',
-    };
+    this.newContact = createNewContact();
     form.reset();
   }
-
-  // addContact(form: NgForm) {
-  //   this.contacts().push(this.newContact);
-  //   this.contactAdded.emit(this.newContact);
-  //   this.newContact = {
-  //     id: 0,
-  //     email: '',
-  //     firstName: '',
-  //     surname: '',
-  //   };
-  //   form.reset();
-  // }
 }

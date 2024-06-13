@@ -5,3 +5,20 @@ export type PlannedEvent = {
   name: string;
   invitees: Contact[];
 }
+
+export function createNewEvent(): PlannedEvent {
+  return {
+    id: 0,
+    name: '',
+    invitees: [],
+  };
+}
+
+export function createPartialEvent(overrides: Partial<PlannedEvent>): PlannedEvent {
+  return {
+    id: 0,
+    name: '',
+    invitees: [],
+    ...overrides
+  }
+}
